@@ -8,7 +8,7 @@ const {
 } = require("../../utils/response");
 
 /* GET orders listing. */
-router.get("/", async (req, res) => {
+router.get("/", async function (req, res) {
   try {
     // Fetch all orders from the database
     const orders = await orderSchema.find();

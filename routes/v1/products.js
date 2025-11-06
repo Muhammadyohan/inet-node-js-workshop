@@ -10,7 +10,7 @@ const {
 } = require("../../utils/response");
 
 /* GET product listing. */
-router.get("/", async (req, res) => {
+router.get("/", async function (req, res) {
   try {
     // Fetch all products from the database excluding password field
     const products = await productSchema.find({});
@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
 });
 
 /* GET product by id */
-router.get("/:id", async (req, res) => {
+router.get("/:id", async function (req, res) {
   try {
     // Get product id from request params
     const productId = req.params.id;
@@ -44,7 +44,7 @@ router.get("/:id", async (req, res) => {
 });
 
 /* POST create product. */
-router.post("/", async (req, res) => {
+router.post("/", async function (req, res) {
   try {
     // Get input data
     var { name, description, price, stock } = req.body;
@@ -72,7 +72,7 @@ router.post("/", async (req, res) => {
 });
 
 /* PUT update product. */
-router.put("/:id", async (req, res) => {
+router.put("/:id", async function (req, res) {
   try {
     // Get input data
     const { name, description, price, stock } = req.body;
@@ -100,7 +100,7 @@ router.put("/:id", async (req, res) => {
 });
 
 /* DELETE product. */
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", async function (req, res) {
   try {
     // Get product id from request params
     const productId = req.params.id;
@@ -122,7 +122,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 /* GET orders listing by product id */
-router.get("/:id/orders", async (req, res) => {
+router.get("/:id/orders", async function (req, res) {
   try {
     // Get product id from request params
     const productId = req.params.id;
@@ -147,7 +147,7 @@ router.get("/:id/orders", async (req, res) => {
 });
 
 /* POST create order for product by product id */
-router.post("/:id/orders", async (req, res) => {
+router.post("/:id/orders", async function (req, res) {
   try {
     // Get input data
     const { quantity } = req.body;
