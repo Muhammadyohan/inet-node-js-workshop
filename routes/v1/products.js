@@ -51,6 +51,7 @@ router.post("/", async (req, res) => {
 
     // Create new product instance
     const newProduct = new productSchema({
+      userId: req.user.id,
       name,
       description,
       price,

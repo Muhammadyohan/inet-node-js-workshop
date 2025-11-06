@@ -4,6 +4,7 @@ const { orderSchema } = require("./order.model");
 
 var productSchema = new Schema(
   {
+    userId: { type: Schema.Types.ObjectId, ref: "users", required: true },
     name: { type: String, required: true },
     description: { type: String, required: true },
     price: { type: Number, required: true },
