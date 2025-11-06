@@ -11,7 +11,10 @@ const {
 /* GET users listing. */
 router.get("/", async function (req, res, next) {
   try {
+    // Fetch all users from the database excluding password field
     let users = await userSchema.find({}, "-password");
+
+    // Send response
     sendSuccess(res, 200, "Get users successfully", users);
   } catch (error) {
     sendInternalServerError(res, error);
@@ -21,7 +24,9 @@ router.get("/", async function (req, res, next) {
 /* PUT aprove user. */
 router.put("/:id/approve", verifyToken, async function (req, res, next) {
   try {
+    // Get user id from request params
     const userId = req.params.id;
+    // Approve user by id
     const user = await userSchema.findByIdAndUpdate(
       userId,
       { approved: true },
@@ -40,6 +45,7 @@ router.put("/:id/approve", verifyToken, async function (req, res, next) {
       return;
     }
 
+    // Send response
     sendSuccess(res, 200, "User approved successfully", user);
   } catch (error) {
     sendInternalServerError(res, error);
