@@ -40,7 +40,7 @@ router.put("/:id/approve", verifyToken, async function (req, res, next) {
     }
 
     // Check if requester is admin
-    if (req.userRole != "admin") {
+    if (req.user.role != "admin") {
       sendError(res, 401, "Only admin can approve users");
       return;
     }
