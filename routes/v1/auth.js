@@ -31,7 +31,7 @@ router.post("/login", async function (req, res, next) {
 
     // Check if user is approved
     if (!user.approved) {
-      return sendError(res, 403, "User not approved by admin");
+      return sendError(res, 400, "User not approved by admin");
     }
 
     // Create and assign a token

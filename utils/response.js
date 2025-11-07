@@ -12,7 +12,11 @@ const sendInternalServerError = (res, error = null) => {
   res.status(500).send({
     status: 500,
     message: "Internal Server Error",
-    data: null,
+    data: error
+      ? {
+          error: error.message || "An unexpected error occurred on the server",
+        }
+      : null,
   });
 };
 
